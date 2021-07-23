@@ -15,6 +15,11 @@
             android:id="@+id/action_sleepTrackerFragment_to_sleepQualityFragment"
             app:destination="@id/sleep_quality_fragment"
             />
+
+        <action
+            android:id="@+id/action_sleepTrackerFragment_to_sleepDetailFragment"
+            app:destination="@id/sleep_detail_fragment"
+            />
     </fragment>
 
     <fragment
@@ -30,6 +35,23 @@
         <action
             android:id="@+id/action_sleepQualityFragment_to_sleepTrackerFragment"
             app:launchSingleTop="false"
+            app:destination="@id/sleep_tracker_fragment"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sleep_detail_fragment"
+        android:label="fragment_sleep_detail"
+        tools:layout="@layout/fragment_sleep_detail"
+        android:name="com.ldnhat.demoroomrecoutine.sleepdetail.SleepDetailFragment"
+        >
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long"
+            />
+
+        <action
+            android:id="@+id/action_sleepDetailFragment_to_sleep_tracker_fragment"
             app:destination="@id/sleep_tracker_fragment"
             />
     </fragment>

@@ -1,6 +1,7 @@
 package com.ldnhat.demoroomrecoutine.sleeptracker
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +20,14 @@ class SleepTrackerViewModel(val database : SleepNightDAO, application: Applicati
     private var tonight = MutableLiveData<SleepNight>()
 
     val nights = database.findAll()
+
+    private val _navigateToSleepDetail = MutableLiveData<Long>()
+
+    val navigatedToSleepDetail:LiveData<Long>
+        get() {
+            return _navigateToSleepDetail
+        }
+
 
     init {
         initializeTonight()
@@ -125,4 +134,12 @@ class SleepTrackerViewModel(val database : SleepNightDAO, application: Applicati
     }
 
 
+
+    fun onSleepNightClicked(id: Long) {
+        _navigateToSleepDetail.value = id
+    }
+
+    fun onSleepDetailNavigated(){
+        _navigateToSleepDetail.value = null
+    }
 }
