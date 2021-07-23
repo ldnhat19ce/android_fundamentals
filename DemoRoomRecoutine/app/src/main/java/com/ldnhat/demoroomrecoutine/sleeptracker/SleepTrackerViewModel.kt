@@ -11,13 +11,15 @@ import com.ldnhat.demoroomrecoutine.database.SleepNightDAO
 import com.ldnhat.demoroomrecoutine.formatNights
 import kotlinx.coroutines.*
 
-class SleepTrackerViewModel(val database : SleepNightDAO, application: Application) : AndroidViewModel(application) {
+class SleepTrackerViewModel(dataSource : SleepNightDAO, application: Application) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
 
+    val database = dataSource
+
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var tonight = MutableLiveData<SleepNight>()
+    private var tonight = MutableLiveData<SleepNight?>()
 
     val nights = database.findAll()
 

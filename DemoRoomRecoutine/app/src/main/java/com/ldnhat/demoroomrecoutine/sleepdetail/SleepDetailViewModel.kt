@@ -18,6 +18,11 @@ class SleepDetailViewModel(private val sleepNightKey:Long, private val dataSourc
     val night:LiveData<SleepNight>
     get() = _night
 
+    private val _navigationToSleepTracker = MutableLiveData<Boolean>()
+
+    val navigationToSleepTracker : LiveData<Boolean>
+    get() = _navigationToSleepTracker
+
     init {
         uiScope.launch {
             _night.value = findSleepNightById()
@@ -28,5 +33,13 @@ class SleepDetailViewModel(private val sleepNightKey:Long, private val dataSourc
         return withContext(Dispatchers.IO){
             dataSource.findById(sleepNightKey)
         }
+    }
+
+    fun doneNavigating(){
+        _navigationToSleepTracker.value = null
+    }
+
+    fun onClose(){
+        _navigationToSleepTracker.value = true
     }
 }
