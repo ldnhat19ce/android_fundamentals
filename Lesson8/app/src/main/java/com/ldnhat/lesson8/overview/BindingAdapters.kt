@@ -10,8 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.ldnhat.lesson8.R
 import com.ldnhat.lesson8.network.MarsPropety
 
-@BindingAdapter("imageUrl" +
-        "")
+@BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imgUrl : String?){
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
@@ -40,5 +39,14 @@ fun bindStatus(statusImageView: ImageView, status : MarsApiStatus?){
         MarsApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+    }
+}
+
+@BindingAdapter("isRental")
+fun bindRental(rentalImageView: ImageView, isRental : Boolean){
+    if (isRental){
+        rentalImageView.visibility = View.VISIBLE
+    }else{
+        rentalImageView.visibility = View.GONE
     }
 }

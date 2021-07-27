@@ -7,15 +7,33 @@
         <variable
             name="property"
             type="com.ldnhat.lesson8.network.MarsPropety" />
+        <import type="android.view.View"/>
     </data>
-    <ImageView
-        android:id="@+id/mars_image"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:padding="2dp"
-        tools:src="@tools:sample/backgrounds/scenic"
-        imageUrl="@{property.imgSrcUrl}"
-        />
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="170dp">
+       <ImageView
+           android:id="@+id/mars_image"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:scaleType="centerCrop"
+           android:adjustViewBounds="true"
+           android:padding="2dp"
+           tools:src="@tools:sample/backgrounds/scenic"
+           imageUrl="@{property.imgSrcUrl}"
+           />
+
+       <ImageView
+           android:id="@+id/mars_property_type"
+           android:layout_width="wrap_content"
+           android:layout_height="45dp"
+           android:layout_gravity="bottom|end"
+           android:adjustViewBounds="true"
+           android:padding="5dp"
+           android:scaleType="fitCenter"
+           android:src="@drawable/ic_for_sale_outline"
+           tools:src="@drawable/ic_for_sale_outline"
+           isRental="@{property.rental}"
+           />
+   </FrameLayout>
 </layout>

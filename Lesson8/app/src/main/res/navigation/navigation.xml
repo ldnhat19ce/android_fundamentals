@@ -25,5 +25,10 @@
         android:name="com.ldnhat.lesson8.detail.DetailFragment"
         >
 
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.ldnhat.lesson8.network.MarsPropety"
+            />
+
     </fragment>
 </navigation>

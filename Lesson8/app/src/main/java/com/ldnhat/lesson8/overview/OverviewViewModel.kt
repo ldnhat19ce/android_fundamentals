@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ldnhat.lesson8.network.MarsApi
+import com.ldnhat.lesson8.network.MarsApiFilter
 import com.ldnhat.lesson8.network.MarsPropety
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,24 +35,29 @@ class OverviewViewModel : ViewModel() {
     val marsProperty:LiveData<List<MarsPropety>>
     get() = _marsProperty
 
+    private val _navigateToSelectedProperty = MutableLiveData<MarsPropety>()
+
+    val navigateToSelectedProperty:LiveData<MarsPropety>
+    get() = _navigateToSelectedProperty
+
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     init {
         println("viewModel init")
-        getMarsRealEstateProperties()
+        getMarsRealEstateProperties(MarsApiFilter.SHOW_ALL)
     }
 
-    private fun getMarsRealEstateProperties(){
+    private fun getMarsRealEstateProperties(filter: MarsApiFilter){
         try{
             coroutineScope.launch {
-                var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
+                var getPropertiesDeferred = MarsApi.retrofitService.getProperties(filter.value)
 
                 _status.value = MarsApiStatus.LOADING
                 var listResult = getPropertiesDeferred.await()
                 _status.value = MarsApiStatus.DONE
-                if (listResult.size > 0){
+                if (listResult.isNotEmpty()){
                     _marsProperty.value = listResult
                 }
 
@@ -63,6 +69,18 @@ class OverviewViewModel : ViewModel() {
             _status.value = MarsApiStatus.ERROR
             _marsProperty.value = ArrayList()
         }
+    }
+
+    fun updateFilter(filter: MarsApiFilter){
+        getMarsRealEstateProperties(filter)
+    }
+
+    fun displayPropertyDetails(marsProperty: MarsPropety){
+        _navigateToSelectedProperty.value = marsProperty
+    }
+
+    fun displayPropertyDetailsComplete(){
+        _navigateToSelectedProperty.value = null
     }
 
     override fun onCleared() {
