@@ -1,0 +1,50 @@
+1.To avoid losing data during a device-configuration change, you should save app data in which class?
+-> viewModel
+
+2.A ViewModel should never contain any references to fragments, activities, or views. True or false?
+-> false
+
+3.When is a ViewModel destroyed?
+-> When the associated UI controller is finished (if it's an activity) or detached (if it's a fragment).
+
+4.What is the ViewModelFactory interface for?
+-> Instantiating a ViewModel object.
+
+5.How do you encapsulate the LiveData stored in a 
+	ViewModel so that external objects can read data without being able to update it?
+-> Inside the ViewModel object, change the data type of the data to private MutableLiveData. 
+Use a backing property to expose read-only data of the type LiveData
+
+6.LiveData updates a UI controller (such as a fragment) if the UI controller is in which of the following states?
+-> resume
+
+7.In the LiveData observer pattern, what's the observable item (what is observed)?
+-> The data in a LiveData object
+
+8. Which of the following statements is not true about listener bindings?
+-> Listener bindings work with all versions of the Android Gradle plugin.
+
+
+9.Assume your app includes this string resource:
+<string name="generic_name">Hello %s</string>
+
+Which of the following is the correct syntax for formatting the string, using the data-binding expression?
+
+-> android:text= "@{@string/generic_name(user.name)}"
+
+10. When is a listener-binding expression evaluated and run?
+-> When an event such as onClick() occurs
+
+11.In which class should you add the data-formatting logic that uses the 
+Transformations.map() method to convert LiveData to a different value or format?
+-> ViewModel
+
+12.The Transformations.map() method provides an easy way to perform data manipulations on the LiveData and returns
+-> A LiveData object
+
+13.What are the parameters for the Transformations.map() method?
+-> A source LiveData and a function to be applied to the LiveData
+
+14.The lambda function passed into the Transformations.map() method is executed in which thread?
+-> Main thread
+
