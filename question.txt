@@ -1,0 +1,150 @@
+1. How do you indicate that a class represents an entity to store in a Room database?
+-> Annotate the class with @Entity.
+
+2.The DAO (data access object) is an interface that Room uses to map Kotlin functions to database queries.
+How do you indicate that an interface represents a DAO for a Room database?
+
+-> Annotate the interface with @Dao.
+
+3.Which of the following statements are true about the Room database? Choose all that apply.
+-> If you return LiveData from a query, Room will keep the LiveData updated for you if the LiveData changes.
+To identify a class as a Room database, make it a subclass of RoomDatabase and annotate it with @Database.
+You can define tables for a Room database as annotated data classes.
+
+4.Which of the following annotations can you use in your @Dao interface? Choose all that apply.
+
+@Update
+@Insert
+@Query
+
+5. How can you verify that your database is working? Select all that apply.
+-> Write instrumented tests.
+
+6.Which of the following is not a benefit of using coroutines?:
+-> They always make app runs faster.
+
+7. Which of the following is not true for suspend functions.?
+-> Suspend functions must always run in the background.
+
+8. Which of the following statements is NOT true?
+-> Whether blocked or suspended, execution is still waiting for the result of the coroutine before continuing.
+
+9. One way to enable your app to trigger navigation from one fragment to the next is to 
+use a LiveData value to indicate whether or not to trigger navigation.
+
+What are the steps for using a LiveData value, called gotoBlueFragment, 
+to trigger navigation from the red fragment to the blue fragment? Select all that apply
+
+-> In the RedFragment, observe the gotoBlueFragment value. 
+Implement the observe{} code to navigate to BlueFragment when appropriate, 
+and then reset the value of gotoBlueFragment to indicate that navigation is complete.
+
+10. You can change whether a Button is enabled (clickable) or not by using LiveData. 
+How would you ensure that your app changes the UpdateNumber button so that:
+
+	The button is enabled if myNumber has a value greater than 5.
+The button is not enabled if myNumber is equal to or less than 5.
+	Assume that the layout that contains the UpdateNumber button includes 
+the <data> variable for the NumbersViewModel as shown here:
+
+
+<data>
+   <variable
+       name="NumbersViewModel"
+       type="com.example.android.numbersapp.NumbersViewModel" />
+</data>
+
+
+Assume that the ID of the button in the layout file is the following:
+
+android:id="@+id/update_number_button"
+
+What else do you need to do? Select all that apply.
+->
+
+val myNumber: LiveData<Int>
+
+val enableUpdateNumberButton = Transformations.map(myNumber) {
+   myNumber > 5
+}
+
+android:enabled="@{NumbersViewModel.enableUpdateNumberButton}"
+
+
+11. How does RecyclerView display items? Select all that apply.
+-> Scrolls vertically or horizontally.
+Displays items in a list or a grid.
+Allows custom layouts when a list or a grid is not enough for the use case.
+
+12.What are the benefits of using RecyclerView? Select all that apply.
+-> Efficiently displays large lists
+Minimizes the need for refreshes when an item is updated, deleted, or added to the list.
+Reuses view that scrolls off screen to display the next item that scrolls on screen
+
+13. What are some of the reasons for using adapters? Select all that apply.
+-> Data processing layers do not have to concern themselves with how data will be displayed.
+RecyclerView is agnostic to the data that is being displayed.
+
+14.Which of the following are true of ViewHolder? Select all that apply.
+-> You can have more than one ViewHolder in a RecyclerView.
+The Adapter binds data to the ViewHolder.
+
+15. Which of the following are necessary to use DiffUtil? Select all that apply.
+-> Extend the ItemCallBack class.
+ Override areItemsTheSame().
+Override areContentsTheSame().
+
+16. Which of the following are true about binding adapters?
+-> Binding adapters are a good solution when you need to transform complex data.
+
+17. When should you consider using Transformations instead of a binding adapter? Select all that apply.
+-> Your data is simple.
+
+18. Which of the following are layout managers provided by Android? Select all that apply.
+-> LinearLayoutManager
+GridLayoutManager
+StaggeredGridLayoutManager
+
+19. What is a "span"?
+-> The dimensions of an item in a grid.
+
+20. Assume that your app contains a RecyclerView that displays items in a shopping list. 
+Your app also defines a click-listener class:
+
+class ShoppingListItemListener(val clickListener: (itemId: Long) -> Unit) {
+    fun onClick(cartItem: CartItem) = clickListener(cartItem.itemId)
+}
+
+How do you make the ShoppingListItemListener available to data binding? Select one.
+
+-> In the layout file that defines the layout for a single row in the shopping list, 
+add a <data> variable for ShoppingListItemListener
+
+21. Where do you add the android:onClick attribute to make items in a RecyclerView respond to clicks? Select all that apply.
+-> Add it to the layout file for an item in the row. If you want the entire item to be clickable, 
+add it to the parent view that contains the items in the row.
+
+Add it to the layout file for an item in the row. If you want a 
+single TextView in the item to be clickable, add it to the <TextView>.
+
+22. Which of the following statements is true about ViewHolder?
+
+-> An adapter can use multiple ViewHolder classes to hold headers and various types of data.
+
+23. When should you use coroutines with a RecyclerView? Select all the statements that are true.
+
+->  List manipulations can take a long time, and you should always do them using coroutines.
+
+24. Which of the following do you NOT have to do when using more than one ViewHolder?
+
+->  In the ViewHolder, provide multiple layout files to inflate as needed.
+
+
+
+
+
+
+
+
+
+
