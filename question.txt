@@ -1,0 +1,14 @@
+1. Which component in the Android Architecture Components is responsible for 
+keeping the offline cache up-to-date and getting data from the network?
+-> Repository
+
+2. What is the best way to save structured data on the device file system for offline caching?
+-> Room
+
+3. The Transformations.map converts one LiveData into another
+-> LiveData
+
+4. When implementing offline caching, which one of the following 
+strategies is a good example of the concept of separation of concerns?
+
+-> Create separate classes to represent the network, domain, and database objects.
