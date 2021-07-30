@@ -1,0 +1,9 @@
+1. What are the concrete implementations of the WorkRequest class?
+-> OneTimeWorkRequest and PeriodicWorkRequest
+
+2. Which of the following classes does the WorkManager use to schedule the background task on API 23 and higher?
+
+-> BroadcastReceiver and AlarmManager
+
+3. Which API do you use to add constraints to a WorkRequest?
+->  setConstraints()
