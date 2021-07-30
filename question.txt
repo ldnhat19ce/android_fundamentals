@@ -1,0 +1,21 @@
+1. What are the two key things Retrofit needs to build a web services API?
+-> The base URI for the web service, and a converter factory.
+
+2.What is the purpose of the Moshi library?
+-> To parse a JSON response from a web service into Kotlin data objects.
+
+3.Which Glide method do you use to indicate the ImageView that will contain the loaded image?
+-> into()
+
+4. How do you specify a placeholder image to show when Glide is loading?
+-> Use RequestOptions() and call the placeholder() method with a drawable.
+
+5. How do you indicate that a method is a binding adapter?
+-> Annotate the method with @BindingAdapter
+
+6. What does the <import> tag in an XML layout file do?
+-> Enable you to reference classes and class members in binding expressions.
+
+7. How do you add a query option to a REST web service call in Retrofit?
+-> Append the query to the end of the request URL.
+Add a parameter for the query to the function that makes the request, and annotate that parameter with @Query
